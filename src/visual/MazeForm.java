@@ -15,13 +15,11 @@ public class MazeForm
     private JPanel mazeForm;
     private JButton solveBtn;
 
-    private MazeGenerator generator;
-
     public static void main(String... args)
     {
         JFrame frame = new JFrame("MazeGen");
         frame.setContentPane(new MazeForm().mazeForm);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
@@ -65,10 +63,12 @@ public class MazeForm
     */
     private void gen(int width, int height)
     {
-        generator = new MazeGenerator(width, height);
+        long time = System.currentTimeMillis();
+        MazeGenerator generator = new MazeGenerator(width, height);
         generator.gen();
         ((MazePanel) drawBox).setGenerator(generator);
         drawBox.repaint();
+        JOptionPane.showMessageDialog(mazeForm, "Maze took " + (System.currentTimeMillis() - time) + "ms to gen", "TIMER", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void createUIComponents()

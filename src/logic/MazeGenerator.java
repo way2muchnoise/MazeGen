@@ -49,7 +49,7 @@ public class MazeGenerator
         Cell current = this.board[0][0];//start cell is top left
         while (true)
         {
-            System.out.println(stack.size());
+            //System.out.println(stack.size()); Gen time drastically increased when uncommented
             Cell next = getRandomUnvisitedNeighbour(current, r);
             if (next != null)
             {

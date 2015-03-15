@@ -24,7 +24,7 @@ public class MazePanel extends JPanel
         long time = System.currentTimeMillis();
         solver = new MazeSolver(generator.maze());
         solver.solve();
-        JOptionPane.showMessageDialog(this, "Maze took " + (System.currentTimeMillis() - time) + " to gen", "TIMER", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Maze took " + (System.currentTimeMillis() - time) + "ms to solve", "TIMER", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @Override

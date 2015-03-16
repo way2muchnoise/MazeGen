@@ -3,14 +3,14 @@ package MazeGen.reference;
 public class Reference
 {
     // User friendly version of our mods name.
-    public static final String NAME = "Base Mod";
+    public static final String NAME = "Maze Mod";
 
     // Internal mod name used for reference purposes and resource gathering.
-    public static final String ID = "BaseMod";
+    public static final String ID = "MazeMod";
 
-    public static final String DESCRIPTION = "";
+    public static final String DESCRIPTION = "Some maze fiddling";
 
-    public static final String[] AUTHORS = new String[]{};
+    public static final String[] AUTHORS = new String[]{ "way2muchnoise" };
 
     // Main version information that will be displayed in mod listing and for other purposes.
     public static final String V_MAJOR = "@MAJOR@";

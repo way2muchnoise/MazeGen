@@ -1,4 +1,4 @@
-package MazeGen.visual;
+package visual;
 
 import MazeGen.logic.MazeGenerator;
 

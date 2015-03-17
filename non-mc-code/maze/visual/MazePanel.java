@@ -1,7 +1,7 @@
-package visual;
+package maze.visual;
 
-import MazeGen.logic.MazeGenerator;
-import MazeGen.logic.MazeSolver;
+import MazeGen.maze.logic.MazeGenerator;
+import MazeGen.maze.logic.MazeSolver;
 
 import javax.swing.*;
 import java.awt.*;

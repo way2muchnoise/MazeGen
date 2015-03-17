@@ -1,6 +1,6 @@
-package MazeGen.logic;
+package MazeGen.maze.logic;
 
-import MazeGen.data.Cell;
+import MazeGen.maze.data.Cell;
 
 import java.util.ArrayList;
 import java.util.List;

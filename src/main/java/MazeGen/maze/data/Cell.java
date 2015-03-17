@@ -1,4 +1,4 @@
-package MazeGen.data;
+package MazeGen.maze.data;
 
 import java.util.ArrayList;
 import java.util.List;

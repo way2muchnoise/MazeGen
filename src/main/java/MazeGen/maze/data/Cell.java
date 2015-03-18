@@ -171,4 +171,19 @@ public class Cell
         } while (cell != null);
         return parents;
     }
+
+    /**
+     * Gets the lines for drawing the maze
+     *
+     * @param maze the maze to render
+     * @return a list of a list with the walls for each cells
+     */
+    public static List<List<int[]>> getLines(Cell[][] maze)
+    {
+        List<List<int[]>> lines = new ArrayList<List<int[]>>();
+        for (Cell[] column : maze)
+            for (Cell cell : column)
+                lines.add(cell.renderLines());
+        return lines;
+    }
 }

@@ -109,20 +109,6 @@ public class MazeGenerator
         return null;
     }
 
-    /**
-     * gets the lines for drawing the maze
-     *
-     * @return a list of a list with the walls for each cells
-     */
-    public List<List<int[]>> getLines()
-    {
-        List<List<int[]>> lines = new ArrayList<List<int[]>>();
-        for (Cell[] column : this.board)
-            for (Cell cell : column)
-                lines.add(cell.renderLines());
-        return lines;
-    }
-
     private List<Cell> removeAllVisited(List<Cell> cells)
     {
         List<Cell> unvisited = new ArrayList<Cell>();

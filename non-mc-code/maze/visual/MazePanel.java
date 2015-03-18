@@ -1,5 +1,6 @@
 package maze.visual;
 
+import MazeGen.maze.data.Cell;
 import MazeGen.maze.logic.MazeGenerator;
 import MazeGen.maze.logic.MazeSolver;
 
@@ -34,7 +35,7 @@ public class MazePanel extends JPanel
         if (generator != null)
         {
             //maze lines
-            for (List<int[]> lines : generator.getLines())
+            for (List<int[]> lines : Cell.getLines(generator.maze()))
             {
                 for (int[] line : lines)
                 {

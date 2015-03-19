@@ -1,13 +1,26 @@
 package MazeGen.util;
 
-import net.minecraft.init.Blocks;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 
 public class WorldUtils
 {
-
-    public static void drawLine(int x0 ,int y0, int z0, int x1, int y1, int z1, World world)
+    /**
+     * Draw a line of blocks
+     * @param x0 start point x
+     * @param y0 start point y
+     * @param z0 start point z
+     * @param x1 end point x
+     * @param y1 end point y
+     * @param z1 end point z
+     * @param world the world to put it in
+     * @param block the block to draw with
+     */
+    public static void drawLine(int x0 ,int y0, int z0, int x1, int y1, int z1, World world, Block block)
     {
+        // Draw the start
+        world.setBlock(x0, y0, z0, block);
+
         int x, delta_x, step_x;
         int y, delta_y, step_y;
         int z, delta_z, step_z;
@@ -84,7 +97,7 @@ public class WorldUtils
             }
 
             //passes through this point
-            world.setBlock(cx, cy, cz, Blocks.diamond_block);
+            world.setBlock(cx, cy, cz, block);
 
             //update progress in other planes
             drift_xy = drift_xy - delta_y;

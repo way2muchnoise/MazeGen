@@ -2,6 +2,7 @@ package MazeGen.maze.logic;
 
 import MazeGen.maze.data.Cell;
 import MazeGen.util.WorldUtils;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class MazeDrawer
         {
             for (int[] line : lines)
             {
-                WorldUtils.drawLine(x + line[0]*width, y, z + line[1]*width , x + line[2]*width, y , z + line[3]*width, world);
+                WorldUtils.drawLine(x + line[0]*width, y, z + line[1]*width , x + line[2]*width, y , z + line[3]*width, world, Blocks.diamond_block);
             }
         }
     }

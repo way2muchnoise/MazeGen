@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MazeForm
+public class MazeForm implements Runnable
 {
     private JTextField widthText;
     private JTextField heightText;
@@ -17,18 +17,32 @@ public class MazeForm
 
     public static void main(String... args)
     {
+        SwingUtilities.invokeLater(new MazeForm());
+    }
+
+    public static void create(MazeGenerator generator)
+    {
+        SwingUtilities.invokeLater(new MazeForm(generator));
+    }
+
+    public static void create(int width, int height)
+    {
+        SwingUtilities.invokeLater(new MazeForm(width, height));
+    }
+
+
+    @Override
+    public void run()
+    {
         JFrame frame = new JFrame("MazeGen");
-        frame.setContentPane(new MazeForm().mazeForm);
+        frame.setContentPane(this.mazeForm);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public MazeForm()
+    private void initComponents()
     {
-        widthText.setText("10");
-        heightText.setText("10");
-        gen(10, 10);
         drawBtn.addActionListener(new ActionListener()
         {
             @Override
@@ -53,6 +67,31 @@ public class MazeForm
                 drawBox.repaint();
             }
         });
+    }
+
+    public MazeForm()
+    {
+        initComponents();
+        widthText.setText("10");
+        heightText.setText("10");
+        gen(10, 10);
+    }
+
+    public MazeForm(int width, int height)
+    {
+        initComponents();
+        widthText.setText(String.valueOf(width));
+        heightText.setText(String.valueOf(height));
+        gen(width, height);
+    }
+
+    public MazeForm(MazeGenerator generator)
+    {
+        initComponents();
+        widthText.setText(String.valueOf(generator.width()));
+        heightText.setText(String.valueOf(generator.height()));
+        ((MazePanel) drawBox).setGenerator(generator);
+        drawBox.repaint();
     }
 
     /*

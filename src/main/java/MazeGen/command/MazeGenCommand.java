@@ -43,7 +43,6 @@ public class MazeGenCommand extends CommandBase
         int height = parseInt(sender, args[1]);
         MazeGenerator mazeGenerator = new MazeGenerator(width, height);
         mazeGenerator.gen();
-        MazeForm.create(mazeGenerator);
         MazeDrawer mazeDrawer = new MazeDrawer(mazeGenerator.maze());
         mazeDrawer.drawMaze(sender.getPlayerCoordinates().posX, sender.getPlayerCoordinates().posY, sender.getPlayerCoordinates().posZ, sender.getEntityWorld());
     }

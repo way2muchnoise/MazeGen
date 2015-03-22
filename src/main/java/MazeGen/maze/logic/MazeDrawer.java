@@ -9,19 +9,19 @@ import java.util.List;
 
 public class MazeDrawer
 {
-    private final int wallWidth, width;
+    private final int wallHeight, width;
     private final Cell[][] maze;
 
     public MazeDrawer(Cell[][] maze)
     {
-        this(maze, 2, 1);
+        this(maze, 3, 3);
     }
 
-    public MazeDrawer(Cell[][] maze,int width, int wallWidth)
+    public MazeDrawer(Cell[][] maze,int width, int wallHeight)
     {
         this.maze = maze;
-        this.width = width;
-        this.wallWidth = wallWidth;
+        this.width = width + 1;
+        this.wallHeight = wallHeight;
     }
 
     public void drawMaze(int x, int y, int z, World world)
@@ -30,7 +30,7 @@ public class MazeDrawer
         {
             for (int[] line : lines)
             {
-                WorldUtils.drawLine(x + line[0]*width, y, z + line[1]*width , x + line[2]*width, y , z + line[3]*width, world, Blocks.diamond_block);
+                WorldUtils.drawWall(x + line[0] * width, y, z + line[1] * width, x + line[2] * width, y, z + line[3] * width, wallHeight, world, Blocks.diamond_block);
             }
         }
     }

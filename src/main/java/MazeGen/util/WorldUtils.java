@@ -75,7 +75,7 @@ public class WorldUtils
         z = z0;
 
         //step through longest delta (which we have swapped to x)
-        for (x = x0; x < x1; x += step_x)
+        for (x = x0; x <= x1; x += step_x)
         {
             //copy position
             cx = x;

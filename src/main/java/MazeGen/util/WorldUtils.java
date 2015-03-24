@@ -151,12 +151,29 @@ public class WorldUtils
      */
     public static void drawCircle(int x, int y, int z, int r, World world, Block block)
     {
+        drawCircleWall(x, y, z, r, 1, world, block);
+    }
+
+    /**
+     * Draws a circle wall of given radius and height
+     *
+     * @param x center X
+     * @param y center Y
+     * @param z center Z
+     * @param r radius
+     * @param height height of the wall
+     * @param world world to place in
+     * @param block block to draw with
+     */
+    public static void drawCircleWall(int x, int y, int z, int r, int height, World world, Block block)
+    {
         double step = 1D/r;
         for (double angle = 0; angle < 2*Math.PI; angle += step)
         {
             int cx = (int)Math.round(x + r * Math.cos(angle));
             int cz = (int)Math.round(z + r * Math.sin(angle));
-            world.setBlock(cx, y , cz, block);
+            for (int h = 0; h < height; h++)
+                world.setBlock(cx, y + h, cz, block);
         }
     }
 }

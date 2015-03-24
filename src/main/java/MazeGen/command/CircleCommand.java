@@ -28,20 +28,25 @@ public class CircleCommand extends CommandBase
     @Override
     public String getCommandUsage(ICommandSender sender)
     {
-        return "drawCircle <radius>";
+        return "drawCircle <radius> [<height>]";
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args)
     {
-        if (args.length != 1)
+        if (args.length != 1 && args.length != 2)
         {
             throw new SyntaxErrorException();
         }
         try
         {
+            int h = 1;
             int r = Integer.parseInt(args[0]);
-            WorldUtils.drawCircle(sender.getPlayerCoordinates().posX, sender.getPlayerCoordinates().posY, sender.getPlayerCoordinates().posZ, r, sender.getEntityWorld(), Blocks.diamond_block);
+            if (args.length == 2)
+            {
+                h = Integer.parseInt(args[1]);
+            }
+            WorldUtils.drawCircleWall(sender.getPlayerCoordinates().posX, sender.getPlayerCoordinates().posY, sender.getPlayerCoordinates().posZ, r, h, sender.getEntityWorld(), Blocks.diamond_block);
 
         } catch (NumberFormatException ex)
         {

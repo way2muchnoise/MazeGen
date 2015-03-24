@@ -138,4 +138,25 @@ public class WorldUtils
             }
         }
     }
+
+    /**
+     * Draws a circle of given radius
+     *
+     * @param x center X
+     * @param y center Y
+     * @param z center Z
+     * @param r radius
+     * @param world world to place in
+     * @param block block to draw with
+     */
+    public static void drawCircle(int x, int y, int z, int r, World world, Block block)
+    {
+        double step = 1D/r;
+        for (double angle = 0; angle < 2*Math.PI; angle += step)
+        {
+            int cx = (int)Math.round(x + r * Math.cos(angle));
+            int cz = (int)Math.round(z + r * Math.sin(angle));
+            world.setBlock(cx, y , cz, block);
+        }
+    }
 }

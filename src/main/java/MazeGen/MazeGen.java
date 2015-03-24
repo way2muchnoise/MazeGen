@@ -1,5 +1,6 @@
 package MazeGen;
 
+import MazeGen.command.CircleCommand;
 import MazeGen.command.MazeGenCommand;
 import MazeGen.reference.Metadata;
 import MazeGen.reference.Reference;
@@ -39,5 +40,6 @@ public class MazeGen
     public void onServerStarting(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new MazeGenCommand());
+        event.registerServerCommand(new CircleCommand());
     }
 }

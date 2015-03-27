@@ -22,9 +22,24 @@ public class Cell
         return this.location;
     }
 
-    public boolean[] holes()
+    public boolean west()
     {
-        return this.holes;
+        return this.holes[0];
+    }
+
+    public boolean north()
+    {
+        return this.holes[1];
+    }
+
+    public boolean east()
+    {
+        return this.holes[2];
+    }
+
+    public boolean south()
+    {
+        return this.holes[3];
     }
 
     public Cell parent()

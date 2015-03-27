@@ -33,19 +33,19 @@ public class MazeSolver
             closed.add(current);
             int x = current.location()[0];
             int y = current.location()[1];
-            if (current.holes()[0])
+            if (current.west())
             {
                 ListCheck(current, maze[x - 1][y]);
             }
-            if (current.holes()[1])
+            if (current.north())
             {
                 ListCheck(current, maze[x][y - 1]);
             }
-            if (current.holes()[2])
+            if (current.east())
             {
                 ListCheck(current, maze[x + 1][y]);
             }
-            if (current.holes()[3])
+            if (current.south())
             {
                 ListCheck(current, maze[x][y + 1]);
             }

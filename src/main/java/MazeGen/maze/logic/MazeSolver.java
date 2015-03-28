@@ -60,6 +60,12 @@ public class MazeSolver
         }
     }
 
+    /**
+     * Is cell in the open stack
+     *
+     * @param find cell to find
+     * @return true if in the open stack
+     */
     private boolean openContains(Cell find)
     {
         for (Cell cell : open)
@@ -67,6 +73,12 @@ public class MazeSolver
         return false;
     }
 
+    /**
+     * Is cell in the closed stack
+     *
+     * @param find cell to find
+     * @return true if in the closed stack
+     */
     private boolean closedContains(Cell find)
     {
         for (Cell cell : closed)
@@ -105,7 +117,7 @@ public class MazeSolver
      *
      * @param cell the origin Cell
      */
-    private void CalculateDistanceToEnd(Cell cell)
+    private void calculateDistanceToEnd(Cell cell)
     {
         double mX = maze.length;
         double mY = maze[0].length;

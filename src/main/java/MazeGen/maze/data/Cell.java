@@ -147,22 +147,22 @@ public class Cell
     public List<int[]> renderLines()
     {
         List<int[]> lines = new ArrayList<int[]>();
-        if (!holes[0])
+        if (!west())
         {
             int[] line = {this.location[0], this.location[1], this.location[0], this.location[1] + 1};
             lines.add(line);
         }
-        if (!holes[1])
+        if (!north())
         {
             int[] line = {this.location[0], this.location[1], this.location[0] + 1, this.location[1]};
             lines.add(line);
         }
-        if (!holes[2])
+        if (!east())
         {
             int[] line = {this.location[0] + 1, this.location[1], this.location[0] + 1, this.location[1] + 1};
             lines.add(line);
         }
-        if (!holes[3])
+        if (!south())
         {
             int[] line = {this.location[0], this.location[1] + 1, this.location[0] + 1, this.location[1] + 1};
             lines.add(line);

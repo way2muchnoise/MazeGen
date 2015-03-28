@@ -109,7 +109,13 @@ public class MazeGenerator
         return null;
     }
 
-    private List<Cell> removeAllVisited(List<Cell> cells)
+    /**
+     * Remove all visited cells from given list
+     *
+     * @param cells list to check
+     * @return list with only unvisited cells
+     */
+    private static List<Cell> removeAllVisited(List<Cell> cells)
     {
         List<Cell> unvisited = new ArrayList<Cell>();
         for (Cell cell : cells)

@@ -10,6 +10,7 @@ import java.util.Stack;
 public class MazeGenerator
 {
     private Cell[][] board;
+    private int endRow, endColumn;
     private Random r;
 
     public Cell[][] maze()
@@ -27,7 +28,17 @@ public class MazeGenerator
         return this.board[0].length;
     }
 
-    public MazeGenerator(int width, int height)
+    public int endRow()
+    {
+        return this.endRow;
+    }
+
+    public int endColumn()
+    {
+        return this.endColumn;
+    }
+
+    public MazeGenerator(int width, int height, int endRow, int endColumn)
     {
         this.board = new Cell[width][height];
         for (int i = 0; i < width; i++)
@@ -37,7 +48,14 @@ public class MazeGenerator
                 this.board[i][j] = new Cell(i, j);
             }
         }
+        this.endRow = endRow;
+        this.endColumn = endColumn;
         r = new Random();
+    }
+
+    public MazeGenerator(int width, int height)
+    {
+        this(width, height, width-1, height-1);
     }
 
     /**

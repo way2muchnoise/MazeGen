@@ -5,6 +5,7 @@ import MazeGen.maze.logic.MazeGenerator;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class MazeForm implements Runnable
 {
@@ -14,6 +15,7 @@ public class MazeForm implements Runnable
     private JButton drawBtn;
     private JPanel mazeForm;
     private JButton solveBtn;
+    private Random r;
 
     public static void main(String... args)
     {
@@ -67,6 +69,7 @@ public class MazeForm implements Runnable
                 drawBox.repaint();
             }
         });
+        r = new Random();
     }
 
     public MazeForm()
@@ -103,7 +106,7 @@ public class MazeForm implements Runnable
     private void gen(int width, int height)
     {
         long time = System.currentTimeMillis();
-        MazeGenerator generator = new MazeGenerator(width, height);
+        MazeGenerator generator = new MazeGenerator(width, height, r.nextInt(width-1)+1, r.nextInt(height-1)+1);
         generator.gen();
         ((MazePanel) drawBox).setGenerator(generator);
         drawBox.repaint();

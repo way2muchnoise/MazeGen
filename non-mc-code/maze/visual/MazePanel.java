@@ -23,7 +23,7 @@ public class MazePanel extends JPanel
     public void solve()
     {
         long time = System.currentTimeMillis();
-        solver = new MazeSolver(generator.maze());
+        solver = new MazeSolver(generator.maze(), generator.endRow(), generator.endColumn());
         solver.solve();
         JOptionPane.showMessageDialog(this, "Maze took " + (System.currentTimeMillis() - time) + "ms to solve", "TIMER", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -47,7 +47,7 @@ public class MazePanel extends JPanel
             g.fillRect(multiplier/10, multiplier/10, multiplier - multiplier/5, multiplier - multiplier/5);
             //end cell
             g.setColor(Color.RED);
-            g.fillRect((int) ((this.generator.width() - 0.9f) * multiplier), (int) ((this.generator.height() - 0.9f) * multiplier), multiplier - multiplier/5, multiplier - multiplier/5);
+            g.fillRect((int) ((this.generator.endRow() + 0.1f) * multiplier), (int) ((this.generator.endColumn() + 0.1f) * multiplier), multiplier - multiplier/5, multiplier - multiplier/5);
             //when maze is solved draw it
             if (solver != null)
             {

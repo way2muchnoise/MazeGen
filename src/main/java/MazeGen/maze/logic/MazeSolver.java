@@ -14,10 +14,15 @@ public class MazeSolver
 
     public MazeSolver(Cell[][] maze)
     {
+        this(maze, maze.length - 1, maze[0].length - 1);
+    }
+
+    public MazeSolver(Cell[][] maze, int endRow, int endColumn)
+    {
         open = new ArrayList<Cell>();
         closed = new ArrayList<Cell>();
         this.maze = maze;
-        this.end = maze[maze.length - 1][maze[0].length - 1];
+        this.end = maze[endRow][endColumn];
     }
 
     /*
@@ -35,19 +40,19 @@ public class MazeSolver
             int y = current.location()[1];
             if (current.west())
             {
-                ListCheck(current, maze[x - 1][y]);
+                listCheck(current, maze[x - 1][y]);
             }
             if (current.north())
             {
-                ListCheck(current, maze[x][y - 1]);
+                listCheck(current, maze[x][y - 1]);
             }
             if (current.east())
             {
-                ListCheck(current, maze[x + 1][y]);
+                listCheck(current, maze[x + 1][y]);
             }
             if (current.south())
             {
-                ListCheck(current, maze[x][y + 1]);
+                listCheck(current, maze[x][y + 1]);
             }
             if (closedContains(end))
             {
@@ -92,7 +97,7 @@ public class MazeSolver
      * @param current the current Cell
      * @param next    the next Cell
      */
-    private void ListCheck(Cell current, Cell next)
+    private void listCheck(Cell current, Cell next)
     {
         if (closedContains(next))
         {

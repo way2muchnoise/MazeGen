@@ -67,11 +67,6 @@ public class Cell
         this.visited = visited;
     }
 
-    public void location(int[] location)
-    {
-        this.location = location;
-    }
-
     public void parent(Cell parent)
     {
         this.parent = parent;

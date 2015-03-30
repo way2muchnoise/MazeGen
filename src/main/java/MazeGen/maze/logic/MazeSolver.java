@@ -118,21 +118,6 @@ public class MazeSolver
     }
 
     /**
-     * Calculates the distance of a cell to the end cell
-     *
-     * @param cell the origin Cell
-     */
-    private void calculateDistanceToEnd(Cell cell)
-    {
-        double mX = maze.length;
-        double mY = maze[0].length;
-        double cX = cell.location()[0];
-        double cY = cell.location()[1];
-        double distanceH = Math.sqrt(Math.pow(mX - cX, 2) + Math.pow(mY - cY, 2));
-        cell.distanceH((int) distanceH);
-    }
-
-    /**
      * Finds cell with lowest Fcost in the open list,
      * calcs the Hcost when not yet there
      *

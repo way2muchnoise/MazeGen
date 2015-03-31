@@ -1,19 +1,19 @@
 package MazeGen.maze.logic;
 
-import MazeGen.maze.data.Cell;
+import MazeGen.maze.data.Cell2D;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
-public class MazeGenerator
+public class MazeGenerator2D
 {
-    private Cell[][] board;
+    private Cell2D[][] board;
     private int endRow, endColumn;
     private Random r;
 
-    public Cell[][] maze()
+    public Cell2D[][] maze()
     {
         return this.board;
     }
@@ -38,14 +38,14 @@ public class MazeGenerator
         return this.endColumn;
     }
 
-    public MazeGenerator(int width, int height, int endRow, int endColumn)
+    public MazeGenerator2D(int width, int height, int endRow, int endColumn)
     {
-        this.board = new Cell[width][height];
+        this.board = new Cell2D[width][height];
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                this.board[i][j] = new Cell(i, j);
+                this.board[i][j] = new Cell2D(i, j);
             }
         }
         this.endRow = endRow;
@@ -53,7 +53,7 @@ public class MazeGenerator
         r = new Random();
     }
 
-    public MazeGenerator(int width, int height)
+    public MazeGenerator2D(int width, int height)
     {
         this(width, height, width-1, height-1);
     }
@@ -63,12 +63,12 @@ public class MazeGenerator
      */
     public void gen()
     {
-        Stack<Cell> stack = new Stack<Cell>();
-        Cell current = this.board[0][0];//start cell is top left
+        Stack<Cell2D> stack = new Stack<Cell2D>();
+        Cell2D current = this.board[0][0];//start cell is top left
         while (true)
         {
             //System.out.println(stack.size()); Gen time drastically increased when uncommented
-            Cell next = getRandomUnvisitedNeighbour(current, r);
+            Cell2D next = getRandomUnvisitedNeighbour(current, r);
             if (next != null)
             {
                 current.open(next);
@@ -94,10 +94,10 @@ public class MazeGenerator
      *
      * @return a random unvisited neighbour cell, returns null when there are non left
      */
-    private Cell getRandomUnvisitedNeighbour(Cell current, Random r)
+    private Cell2D getRandomUnvisitedNeighbour(Cell2D current, Random r)
     {
         int[] location = current.location();
-        List<Cell> neighbours = new ArrayList<Cell>();
+        List<Cell2D> neighbours = new ArrayList<Cell2D>();
         //add cells that are neighbours
         if (location[0] - 1 > -1)
         {
@@ -133,10 +133,10 @@ public class MazeGenerator
      * @param cells list to check
      * @return list with only unvisited cells
      */
-    private static List<Cell> removeAllVisited(List<Cell> cells)
+    private static List<Cell2D> removeAllVisited(List<Cell2D> cells)
     {
-        List<Cell> unvisited = new ArrayList<Cell>();
-        for (Cell cell : cells)
+        List<Cell2D> unvisited = new ArrayList<Cell2D>();
+        for (Cell2D cell : cells)
             if (!cell.visited()) unvisited.add(cell);
         return unvisited;
     }

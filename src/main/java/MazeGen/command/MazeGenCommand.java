@@ -1,8 +1,7 @@
 package MazeGen.command;
 
-import MazeGen.maze.logic.MazeDrawer;
-import MazeGen.maze.logic.MazeGenerator;
-import maze.visual.MazeForm;
+import MazeGen.maze.logic.MazeDrawer2D;
+import MazeGen.maze.logic.MazeGenerator2D;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.SyntaxErrorException;
@@ -58,9 +57,9 @@ public class MazeGenCommand extends CommandBase
             throw new SyntaxErrorException();
         }
 
-        MazeGenerator mazeGenerator = new MazeGenerator(width, height);
+        MazeGenerator2D mazeGenerator = new MazeGenerator2D(width, height);
         mazeGenerator.gen();
-        MazeDrawer mazeDrawer = new MazeDrawer(mazeGenerator.maze());
+        MazeDrawer2D mazeDrawer = new MazeDrawer2D(mazeGenerator.maze());
         mazeDrawer.drawMaze(x, y, z, sender.getEntityWorld());
     }
 }

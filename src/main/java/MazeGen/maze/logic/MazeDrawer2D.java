@@ -1,23 +1,23 @@
 package MazeGen.maze.logic;
 
-import MazeGen.maze.data.Cell;
+import MazeGen.maze.data.Cell2D;
 import MazeGen.util.WorldUtils;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 import java.util.List;
 
-public class MazeDrawer
+public class MazeDrawer2D
 {
     private final int wallHeight, width;
-    private final Cell[][] maze;
+    private final Cell2D[][] maze;
 
-    public MazeDrawer(Cell[][] maze)
+    public MazeDrawer2D(Cell2D[][] maze)
     {
         this(maze, 3, 3);
     }
 
-    public MazeDrawer(Cell[][] maze,int width, int wallHeight)
+    public MazeDrawer2D(Cell2D[][] maze, int width, int wallHeight)
     {
         this.maze = maze;
         this.width = width + 1;
@@ -26,7 +26,7 @@ public class MazeDrawer
 
     public void drawMaze(int x, int y, int z, World world)
     {
-        for (List<int[]> lines : Cell.getLines(maze))
+        for (List<int[]> lines : Cell2D.getLines(maze))
         {
             for (int[] line : lines)
             {

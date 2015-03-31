@@ -1,20 +1,20 @@
 package maze.visual;
 
-import MazeGen.maze.data.Cell;
-import MazeGen.maze.logic.MazeGenerator;
-import MazeGen.maze.logic.MazeSolver;
+import MazeGen.maze.data.Cell2D;
+import MazeGen.maze.logic.MazeGenerator2D;
+import MazeGen.maze.logic.MazeSolver2D;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class MazePanel extends JPanel
+public class MazePanel2D extends JPanel
 {
-    private MazeGenerator generator;
-    private MazeSolver solver;
+    private MazeGenerator2D generator;
+    private MazeSolver2D solver;
     private static final int multiplier = 30;
 
-    public void setGenerator(MazeGenerator generator)
+    public void setGenerator(MazeGenerator2D generator)
     {
         this.generator = generator;
         solver = null;
@@ -23,7 +23,7 @@ public class MazePanel extends JPanel
     public void solve()
     {
         long time = System.currentTimeMillis();
-        solver = new MazeSolver(generator.maze(), generator.endRow(), generator.endColumn());
+        solver = new MazeSolver2D(generator.maze(), generator.endRow(), generator.endColumn());
         solver.solve();
         JOptionPane.showMessageDialog(this, "Maze took " + (System.currentTimeMillis() - time) + "ms to solve", "TIMER", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -35,7 +35,7 @@ public class MazePanel extends JPanel
         if (generator != null)
         {
             //maze lines
-            for (List<int[]> lines : Cell.getLines(generator.maze()))
+            for (List<int[]> lines : Cell2D.getLines(generator.maze()))
             {
                 for (int[] line : lines)
                 {

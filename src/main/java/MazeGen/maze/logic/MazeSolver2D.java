@@ -1,26 +1,26 @@
 package MazeGen.maze.logic;
 
-import MazeGen.maze.data.Cell;
+import MazeGen.maze.data.Cell2D;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MazeSolver
+public class MazeSolver2D
 {
-    private List<Cell> open;
-    private List<Cell> closed;
-    private Cell[][] maze;
-    private Cell end;
+    private List<Cell2D> open;
+    private List<Cell2D> closed;
+    private Cell2D[][] maze;
+    private Cell2D end;
 
-    public MazeSolver(Cell[][] maze)
+    public MazeSolver2D(Cell2D[][] maze)
     {
         this(maze, maze.length - 1, maze[0].length - 1);
     }
 
-    public MazeSolver(Cell[][] maze, int endRow, int endColumn)
+    public MazeSolver2D(Cell2D[][] maze, int endRow, int endColumn)
     {
-        open = new ArrayList<Cell>();
-        closed = new ArrayList<Cell>();
+        open = new ArrayList<Cell2D>();
+        closed = new ArrayList<Cell2D>();
         this.maze = maze;
         this.end = maze[endRow][endColumn];
     }
@@ -33,7 +33,7 @@ public class MazeSolver
         open.add(maze[0][0]);
         while (true)
         {
-            Cell current = lowestFCostCell();
+            Cell2D current = lowestFCostCell();
             open.remove(current);
             closed.add(current);
             int x = current.location()[0];
@@ -71,9 +71,9 @@ public class MazeSolver
      * @param find cell to find
      * @return true if in the open stack
      */
-    private boolean openContains(Cell find)
+    private boolean openContains(Cell2D find)
     {
-        for (Cell cell : open)
+        for (Cell2D cell : open)
             if (cell == find) return true;
         return false;
     }
@@ -84,9 +84,9 @@ public class MazeSolver
      * @param find cell to find
      * @return true if in the closed stack
      */
-    private boolean closedContains(Cell find)
+    private boolean closedContains(Cell2D find)
     {
-        for (Cell cell : closed)
+        for (Cell2D cell : closed)
             if (cell == find) return true;
         return false;
     }
@@ -97,7 +97,7 @@ public class MazeSolver
      * @param current the current Cell
      * @param next    the next Cell
      */
-    private void listCheck(Cell current, Cell next)
+    private void listCheck(Cell2D current, Cell2D next)
     {
         if (closedContains(next))
         {
@@ -123,10 +123,10 @@ public class MazeSolver
      *
      * @return the cell from the list
      */
-    private Cell lowestFCostCell()
+    private Cell2D lowestFCostCell()
     {
-        Cell current = open.get(0);
-        for (Cell cell : open)
+        Cell2D current = open.get(0);
+        for (Cell2D cell : open)
         {
             if (current.distanceH() == -1)
             {
@@ -147,13 +147,13 @@ public class MazeSolver
      */
     public List<int[]> path()
     {
-        List<Cell> parents = this.end.getParents();//gets parents from end to start
+        List<Cell2D> parents = this.end.getParents();//gets parents from end to start
         parents.remove(null);//remove the last super parent null
         // reverse it so its from start to end
         List<int[]> path = new ArrayList<int[]>();
         for (int i = parents.size() - 1; i > -1; i--)
         {
-            Cell parent = parents.get(i);
+            Cell2D parent = parents.get(i);
             int[] cell = new int[]{parent.location()[0], parent.location()[1]};
             path.add(cell);
         }

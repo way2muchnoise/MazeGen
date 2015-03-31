@@ -3,12 +3,12 @@ package MazeGen.maze.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cell
+public class Cell2D
 {
     private boolean visited;
     private int[] location;
     private boolean[] holes; //W,N,E,S
-    private Cell parent;
+    private Cell2D parent;
     private int distanceG;
     private int distanceH;
 
@@ -42,7 +42,7 @@ public class Cell
         return this.holes[3];
     }
 
-    public Cell parent()
+    public Cell2D parent()
     {
         return this.parent;
     }
@@ -67,7 +67,7 @@ public class Cell
         this.visited = visited;
     }
 
-    public void parent(Cell parent)
+    public void parent(Cell2D parent)
     {
         this.parent = parent;
     }
@@ -82,7 +82,7 @@ public class Cell
         this.distanceH = distanceH;
     }
 
-    public Cell(int x, int y)
+    public Cell2D(int x, int y)
     {
         this.visited = false;
         this.location = new int[]{x, y};
@@ -99,7 +99,7 @@ public class Cell
      *
      * @param end the destination
      */
-    public void calcH(Cell end)
+    public void calcH(Cell2D end)
     {
         double eX = end.location[0];
         double eY = end.location[1];
@@ -113,7 +113,7 @@ public class Cell
      *
      * @param next the next cell
      */
-    public void open(Cell next)
+    public void open(Cell2D next)
     {
         if (this.location[0] < next.location[0])
         {
@@ -170,10 +170,10 @@ public class Cell
      *
      * @return list of the parents
      */
-    public List<Cell> getParents()
+    public List<Cell2D> getParents()
     {
-        List<Cell> parents = new ArrayList<Cell>();
-        Cell cell = this;
+        List<Cell2D> parents = new ArrayList<Cell2D>();
+        Cell2D cell = this;
         do
         {
             parents.add(cell.parent);
@@ -188,11 +188,11 @@ public class Cell
      * @param maze the maze to render
      * @return a list of a list with the walls for each cells
      */
-    public static List<List<int[]>> getLines(Cell[][] maze)
+    public static List<List<int[]>> getLines(Cell2D[][] maze)
     {
         List<List<int[]>> lines = new ArrayList<List<int[]>>();
-        for (Cell[] column : maze)
-            for (Cell cell : column)
+        for (Cell2D[] column : maze)
+            for (Cell2D cell : column)
                 lines.add(cell.renderLines());
         return lines;
     }

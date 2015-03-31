@@ -1,6 +1,6 @@
 package maze.visual;
 
-import MazeGen.maze.logic.MazeGenerator;
+import MazeGen.maze.logic.MazeGenerator2D;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,7 +22,7 @@ public class MazeForm implements Runnable
         SwingUtilities.invokeLater(new MazeForm());
     }
 
-    public static void create(MazeGenerator generator)
+    public static void create(MazeGenerator2D generator)
     {
         SwingUtilities.invokeLater(new MazeForm(generator));
     }
@@ -65,7 +65,7 @@ public class MazeForm implements Runnable
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                ((MazePanel) drawBox).solve();
+                ((MazePanel2D) drawBox).solve();
                 drawBox.repaint();
             }
         });
@@ -88,12 +88,12 @@ public class MazeForm implements Runnable
         gen(width, height);
     }
 
-    public MazeForm(MazeGenerator generator)
+    public MazeForm(MazeGenerator2D generator)
     {
         initComponents();
         widthText.setText(String.valueOf(generator.width()));
         heightText.setText(String.valueOf(generator.height()));
-        ((MazePanel) drawBox).setGenerator(generator);
+        ((MazePanel2D) drawBox).setGenerator(generator);
         drawBox.repaint();
     }
 
@@ -106,15 +106,15 @@ public class MazeForm implements Runnable
     private void gen(int width, int height)
     {
         long time = System.currentTimeMillis();
-        MazeGenerator generator = new MazeGenerator(width, height, r.nextInt(width-1)+1, r.nextInt(height-1)+1);
+        MazeGenerator2D generator = new MazeGenerator2D(width, height, r.nextInt(width-1)+1, r.nextInt(height-1)+1);
         generator.gen();
-        ((MazePanel) drawBox).setGenerator(generator);
+        ((MazePanel2D) drawBox).setGenerator(generator);
         drawBox.repaint();
         JOptionPane.showMessageDialog(mazeForm, "Maze took " + (System.currentTimeMillis() - time) + "ms to gen", "TIMER", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void createUIComponents()
     {
-        drawBox = new MazePanel();
+        drawBox = new MazePanel2D();
     }
 }

@@ -1,4 +1,4 @@
-package MazeGen.maze.logic;
+package MazeGen.maze.logic.solve;
 
 import MazeGen.maze.data.Cell2D;
 

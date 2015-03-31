@@ -1,8 +1,8 @@
 package maze.visual;
 
 import MazeGen.maze.data.Cell2D;
-import MazeGen.maze.logic.MazeGenerator2D;
-import MazeGen.maze.logic.MazeSolver2D;
+import MazeGen.maze.logic.gen.MazeGenerator2D;
+import MazeGen.maze.logic.solve.MazeSolver2D;
 
 import javax.swing.*;
 import java.awt.*;

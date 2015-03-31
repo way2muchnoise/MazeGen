@@ -1,4 +1,4 @@
-package MazeGen.maze.logic;
+package MazeGen.maze.logic.gen;
 
 import MazeGen.maze.data.Cell2D;
 
@@ -7,11 +7,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
-public class MazeGenerator2D
+public class MazeGenerator2D implements IMazeGenerator
 {
     private Cell2D[][] board;
     private int endRow, endColumn;
-    private Random r;
 
     public Cell2D[][] maze()
     {
@@ -50,7 +49,6 @@ public class MazeGenerator2D
         }
         this.endRow = endRow;
         this.endColumn = endColumn;
-        r = new Random();
     }
 
     public MazeGenerator2D(int width, int height)
@@ -61,6 +59,7 @@ public class MazeGenerator2D
     /**
      * Main gen loop
      */
+    @Override
     public void gen()
     {
         Stack<Cell2D> stack = new Stack<Cell2D>();

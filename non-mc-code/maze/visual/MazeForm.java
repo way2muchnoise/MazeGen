@@ -1,6 +1,6 @@
 package maze.visual;
 
-import MazeGen.maze.logic.MazeGenerator2D;
+import MazeGen.maze.logic.gen.MazeGenerator2D;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

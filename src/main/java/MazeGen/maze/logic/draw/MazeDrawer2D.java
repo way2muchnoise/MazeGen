@@ -1,4 +1,4 @@
-package MazeGen.maze.logic;
+package MazeGen.maze.logic.draw;
 
 import MazeGen.maze.data.Cell2D;
 import MazeGen.util.WorldUtils;
@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class MazeDrawer2D
+public class MazeDrawer2D implements IMazeDrawer
 {
     private final int wallHeight, width;
     private final Cell2D[][] maze;
@@ -24,6 +24,7 @@ public class MazeDrawer2D
         this.wallHeight = wallHeight;
     }
 
+    @Override
     public void drawMaze(int x, int y, int z, World world)
     {
         for (List<int[]> lines : Cell2D.getLines(maze))

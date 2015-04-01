@@ -39,7 +39,7 @@ public class MazeDrawer3D implements IMazeDrawer
                 }
                 else
                 {
-                    WorldUtils.drawWall(x + line[0] * width, y + line[1] * wallHeight, z + line[2] * width, x + line[3] * width, y + line[4] * wallHeight, z + line[5] * width, wallHeight, world, Blocks.diamond_block);
+                    WorldUtils.drawWall(x + line[0] * width, y + line[1] * wallHeight, z + line[2] * width, x + line[3] * width, y + line[4] * wallHeight, z + line[5] * width, wallHeight+1, world, Blocks.diamond_block);
                 }
             }
         }

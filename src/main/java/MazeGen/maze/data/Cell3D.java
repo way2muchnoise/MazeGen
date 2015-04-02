@@ -68,10 +68,10 @@ public class Cell3D extends Cell2D
     /**
      * renders the walls for a given cell
      *
-     * @param top the value of y at the top cell
      * @return a list with arrays for each wall
      */
-    public List<int[]> renderLines(int top)
+    @Override
+    public List<int[]> renderLines()
     {
         List<int[]> lines = new ArrayList<int[]>();
         if (!west())
@@ -119,7 +119,7 @@ public class Cell3D extends Cell2D
         for (Cell3D[][] plane : maze)
             for (Cell3D[] column : plane)
                 for(Cell3D cell : column)
-                    lines.add(cell.renderLines(maze[0].length));
+                    lines.add(cell.renderLines());
         return lines;
     }
 }

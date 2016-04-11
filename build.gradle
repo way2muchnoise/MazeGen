@@ -17,39 +17,26 @@ buildscript {
     }
 }
 
-apply plugin: 'scala'
 apply plugin: 'forge'
 apply plugin: 'idea'
 apply plugin: 'maven'
-apply plugin: 'maven-publish'
 
-ext.buildProps = file "build.properties"
-
-buildProps.withReader {
-    def prop = new Properties()
-    prop.load(it)
-    ext.config = new ConfigSlurper().parse prop
-}
 
 repositories {
     maven {
-	name = "forge"
-	url = "http://files.minecraftforge.net/maven"
+        name = "forge"
+        url = "http://files.minecraftforge.net/maven"
     }
     maven { // the repo from which to get NEI and stuff
-	name 'CB Repo'
-	url "http://chickenbones.net/maven"
-    }
-    ivy {
-	name 'FMP'
-	artifactPattern "http://files.minecraftforge.net/[module]/[module]-dev-[revision].[ext]"
+        name 'CB Repo'
+        url "http://chickenbones.net/maven"
     }
 }
 
 dependencies {
-    compile group: 'codechicken', name: 'NotEnoughItems', version: "${config.version.minecraft}-${config.version.nei}", ext: 'jar', classifier: "dev"
-    compile group: 'codechicken', name: 'CodeChickenCore', version: "${config.version.minecraft}-${config.version.cccore}", ext: 'jar', classifier: "dev"
-    compile group: 'codechicken', name: 'CodeChickenLib', version: "${config.version.minecraft}-${config.version.cclib}", ext: 'jar', classifier: "dev"
+    compile group: 'codechicken', name: 'NotEnoughItems', version: "${version_minecraft}-${version_nei}", ext: 'jar', classifier: "dev"
+    compile group: 'codechicken', name: 'CodeChickenCore', version: "${version_minecraft}-${version_cccore}", ext: 'jar', classifier: "dev"
+    compile group: 'codechicken', name: 'CodeChickenLib', version: "${version_minecraft}-${version_cclib}", ext: 'jar', classifier: "dev"
 	compile fileTree(dir: 'lib', include: '*.jar')
 }
 
@@ -57,12 +44,12 @@ group = "MazeGen"
 archivesBaseName = "MazeGen"
 
 minecraft {
-    version = "${config.version.minecraft}-${config.version.forge}"
+    version = "${version_minecraft}-${version_forge}"
 
     replaceIn "reference/Reference.java"
-    replace "@MAJOR@", config.version.mod.major
-    replace "@MINOR@", config.version.mod.minor
-    replace "@REVIS@", config.version.mod.revis
+    replace "@MAJOR@", version_mod_major
+    replace "@MINOR@", version_mod_minor
+    replace "@REVIS@", version_mod_revis
 }
 
 processResources {
@@ -70,29 +57,16 @@ processResources {
 }
 
 allprojects {
-    version = "${config.version.minecraft}-${config.version.mod.major}.${config.version.mod.minor}.${config.version.mod.revis}"
+    version = "${version_minecraft}-${version_mod_major}.${version_mod_minor}.${version_mod_revis}"
 
     jar {
         dependsOn ":copyBuildXml"
         destinationDir = file (rootProject.getRootDir().getPath() + '/output')
     }
-
-    publishing {
-        publications {
-            mavenJava(MavenPublication) {
-                artifact jar
-            }
-        }
-        repositories {
-            maven {
-                url "file://var/www/maven"
-            }
-        }
-    }
 }
 
 task copyBuildXml(type: Copy) {
-    from 'build.properties'
+    from 'gradle.properties'
     into 'output'
 }
 
